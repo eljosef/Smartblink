@@ -12,10 +12,15 @@ class Gpio : public QObject
     Q_OBJECT
 public:
     explicit Gpio(QObject *parent = nullptr);
+    ~Gpio(); // Destructor
+    void set(int pin,bool value);
+    void set(unsigned int pattern);
 
 signals:
 
 public slots:
+private:
+    int m_handle;
 };
 
 #endif // GPIO_H
