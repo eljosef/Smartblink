@@ -17,7 +17,7 @@ Gpio::~Gpio()
 {
     // LED's Ausschalten
         int state = 0;
-        for (int pin : LEDS)
+        for (int pin : LEDS) // Prinzipiell ein Foreach Schleife
             lgGpioWrite(m_handle, pin, state);
         lgGpiochipClose(m_handle);
 }
@@ -39,7 +39,7 @@ void Gpio::set(unsigned int pattern)
     unsigned int check = 0b0001;
     for(auto pin : LEDS)
     {
-        // n stelle von pattern ausmaskieren, value =
+        // maskiert die n-Stelle von pattern aus, value =
         value = check & pattern>>n;
         lgGpioWrite(m_handle, pin, value);
         n++;
